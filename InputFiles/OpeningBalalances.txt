@@ -1,0 +1,23 @@
+Account Number|Account Name|Amount
+1110|Account Dog Bank|124542319
+1120|Account Cat Bank|75614396
+1130|Account Kangaroo Bank|24546145
+1210|Receivables Labrador State|21425409
+1220|Receivables Poodle State|5633158
+1230|Receivables Staffie State|64745515
+1310|Inventory Dog Food|54363775
+1320|Inventory Cat Toys|3124301
+1330|Inventory Fish Tanks|2356633
+1410|Buildings|500000392
+1420|Furntiure|124521667
+1430|Servers|14526528
+1440|Computers|23523592
+1510|Brand|70000605
+2110|Dog Bank overdraft|-1244476
+2120|Cat Bank overdraft|-1451943
+2210|Creditors for dog goods|-14123860
+2220|Creditors for cat goods|-851763
+2310|Loan - Shark 1|-149999314
+2320|Loan - Shark 2|-49999672
+3110|Share capital|-399999661
+3120|Retained Earnings|-491253746

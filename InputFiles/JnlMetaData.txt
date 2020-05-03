@@ -1,0 +1,6 @@
+Jnl Prefix|First Month End|Debit Account Number|Debit Account Full|Credit Account Number|Credit Account Full|Base Amount|Is recurring|Monthly change trend|Number of instances per month|Randomise
+001|31/01/2018|1210|1210 Receivables Labrador State|4110|4110 Sales dog goods|50000|True|0.02|20|True
+002|31/01/2018|1220|1220 Receivables Poodle State|4110|4110 Sales dog goods|30000|True|0.005|15|True
+||TBA||TBA||||||
+||TBA||TBA||||||
+||TBA||TBA||||||

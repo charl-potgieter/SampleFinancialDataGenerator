@@ -1,0 +1,1 @@
+"C:\Users\charl\Dropbox\Dropbox_Charl\Computer_Technical\Programming_GitHub\SampleFinancialDataCreator\InputFiles" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
