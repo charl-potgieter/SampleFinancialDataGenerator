@@ -1,0 +1,5 @@
+Add a table for once off ad hoc jnls (need to ensure they have a differnt Jnl Prefix to ensure no clash with the generated journals)
+
+
+Create a release section in github for excel file
+https://help.github.com/en/github/administering-a-repository/about-releases
