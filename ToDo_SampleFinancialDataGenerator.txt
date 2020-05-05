@@ -1,5 +1,8 @@
 Add a table for once off ad hoc jnls (need to ensure they have a differnt Jnl Prefix to ensure no clash with the generated journals)
 
+Potentially protect sheet (without password)
+
+Create a REAMDE - how do I get this to display on github page?
 
 Create a release section in github for excel file
 https://help.github.com/en/github/administering-a-repository/about-releases

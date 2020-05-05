@@ -1,5 +1,5 @@
 let
-    MonthEndList = fn_std_DatesBetween(param_OpeningBalanceDate, param_LastMonthEnd, "Month"),
+    MonthEndList = fn_std_DatesBetween(DataAccess_DateStart, DataAccess_DateEnd, "Month"),
     ConvertToTable = Table.FromList(MonthEndList, Splitter.SplitByNothing(), {"EndOfMonth"}),
     ChangedType = Table.TransformColumnTypes(ConvertToTable,{{"EndOfMonth", type date}}),
 
