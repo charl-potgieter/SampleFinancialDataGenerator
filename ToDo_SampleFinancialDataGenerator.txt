@@ -1,6 +1,8 @@
-Add a table for once off ad hoc jnls (need to ensure they have a differnt Jnl Prefix to ensure no clash with the generated journals)
+Read in opening balance
 
-Potentially protect sheet (without password)
+Add a retained earnings account code under parameters to identify account for roll forward purposes
+
+Roll up a monthly trial balance (factoring in retained earnings account above)
 
 Create a REAMDE - how do I get this to display on github page?
 

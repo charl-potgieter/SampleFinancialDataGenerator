@@ -10,8 +10,8 @@ Sub RefreshOutputQueries()
     Application.DisplayAlerts = False
     
 
-    ThisWorkbook.Sheets("JournalOutput").ListObjects("tbl_JournalsOutput").QueryTable.Refresh BackgroundQuery:=False
-
+    ThisWorkbook.Sheets("OutputJournals").ListObjects("tbl_Journals").QueryTable.Refresh BackgroundQuery:=False
+    ThisWorkbook.Sheets("OutputChartOfAccounts").ListObjects("tbl_ChartOfAccounts").QueryTable.Refresh BackgroundQuery:=False
 
     'Cleanup
     Application.ScreenUpdating = True
@@ -34,8 +34,9 @@ Sub ExportOutputToFiles()
     Application.Calculation = xlCalculationManual
     Application.DisplayAlerts = False
     
-    ExportTableToPipeDelimtedText Sheets("Journals").ListObjects("tbl_JournalsOutput")
-
+    ExportTableToPipeDelimtedText ThisWorkbook.Sheets("OutputJournals").ListObjects("tbl_Journals")
+    ExportTableToPipeDelimtedText ThisWorkbook.Sheets("OutputChartOfAccounts").ListObjects("tbl_ChartOfAccounts")
+    
     'Cleanup
     Application.ScreenUpdating = True
     Application.EnableEvents = True
