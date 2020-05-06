@@ -1,8 +1,9 @@
 Read in opening balance
 
-Add a retained earnings account code under parameters to identify account for roll forward purposes
-
 Roll up a monthly trial balance (factoring in retained earnings account above)
+ - I have started this but have incorrectly not factored the opening balance into the balance sheet return values. 
+ -  Best approach is to add to journals and buffer.
+ - Maybe once coombined group by account and month end--> will make the buffered table a lot smaller and faster to filter.
 
 Create a REAMDE - how do I get this to display on github page?
 
