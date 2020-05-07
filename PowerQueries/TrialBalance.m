@@ -1,35 +1,39 @@
 let
 
-    BufferedJournals = Table.Buffer(Journals),
+    /*********************************************************************************************************************
+        Create a buffered table of opening balances and journals
+    *********************************************************************************************************************/
 
-    fn_TB_RollUp = 
-    (AccountCode as text, dte as date, AccountType as text)=>
-    let
-        //Uncomment for debuging purposes
-        //account = "1210",
-        //dte = #date(2018,3,31),
+    JournalsSelectedCols = Table.SelectColumns(Journals, {"EndOfMonth", "Account Code", "Jnl Amount"}),
+    JournalsRenamedCol = Table.RenameColumns(JournalsSelectedCols,{{"Jnl Amount", "Amount"}}),
 
-        FilteredJnls = Table.SelectRows(BufferedJournals, 
-            each if AccountType = "Balance Sheet Account" then
-                [EndOfMonth] <= dte and [Account Code] = AccountCode
-            else
-                BufferedJournals),
-        CumulativeTotal = List.Sum(FilteredJnls[Jnl Amount])
-    in
-        CumulativeTotal,
+    OpeningBalancesRaw = DataAccess_OpeningBalalances,
+    OpeningBalanceChangedType = Table.TransformColumnTypes(OpeningBalancesRaw,{{"Account Code and Description", type text}, {"Amount", type number}}),
+    OpeningBalanceAddAccountCodeCol = Table.AddColumn(OpeningBalanceChangedType, "Account Code", each Text.Start([Account Code and Description], param_NumberOfAccountDigits), type text),
+    OpeningBalanceAddDateCol = Table.AddColumn(OpeningBalanceAddAccountCodeCol, "Date", each param_DateStart, type date),
+    OpeningBalanceSelectCols = Table.SelectColumns(OpeningBalanceAddDateCol, {"Date", "Account Code", "Amount"}),
+    OpeningBalanceRenameCols = Table.RenameColumns(OpeningBalanceSelectCols,{{"Date", "EndOfMonth"}}),
+    CombineJournalAndOpeningBalance = Table.Combine({OpeningBalanceRenameCols, JournalsRenamedCol}),
+    GroupedRows = Table.Group(CombineJournalAndOpeningBalance, {"EndOfMonth", "Account Code"}, {{"Amount", each List.Sum([Amount]), type number}}),
+    BufferedTransactions = Table.Buffer(GroupedRows),
 
-
-    //Generate a table of month ends
+    /*********************************************************************************************************************
+        Generate a table of month ends with all accounts for each month
+    *********************************************************************************************************************/
+    
     MonthEndList = fn_std_DatesBetween(param_DateStart, param_DateEnd, "Month"),
     ConvertToTable = Table.FromList(MonthEndList, Splitter.SplitByNothing(), {"EndOfMonth"}),
-    ChangedType = Table.TransformColumnTypes(ConvertToTable,{{"EndOfMonth", type date}}),
-    AddChartOfAccountsTableCol = Table.AddColumn(ChangedType, "ChartOfAccountsTable", each DataAccess_ChartOfAccounts, type table),
+    ChangedType2 = Table.TransformColumnTypes(ConvertToTable,{{"EndOfMonth", type date}}),
+    AddChartOfAccountsTableCol = Table.AddColumn(ChangedType2, "ChartOfAccountsTable", each DataAccess_ChartOfAccounts, type table),
     ExpandedTable = Table.ExpandTableColumn(AddChartOfAccountsTableCol, "ChartOfAccountsTable", {"Account Code and Description"}, {"Account Code and Description"}),
-    
-    //Add account code 
     AddAccountCode = Table.AddColumn(ExpandedTable, "Account code", each Text.Start([Account Code and Description], param_NumberOfAccountDigits), type text),
     RemovedColumn = Table.RemoveColumns(AddAccountCode,{"Account Code and Description"}),
     
+
+    /*********************************************************************************************************************
+        Caclculate tb balance for each date and account
+    *********************************************************************************************************************/
+
     //Add account type
     AddAccountType = Table.AddColumn(RemovedColumn, "Account type", each 
         if Number.From([Account code]) = Number.From(param_RetainedEarningsAccountCode) then
@@ -46,7 +50,7 @@ let
     
     //Add amount column
     AddAmountCol = Table.AddColumn(AddStartOfYearCol, "Amount",
-        each fn_TB_RollUp([Account code], [EndOfMonth], [Account type]), 
+        each fn_TbRollUp([Account code], [EndOfMonth], [Account type], BufferedTransactions), 
         type number)
             
 in

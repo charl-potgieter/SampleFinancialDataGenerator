@@ -1,9 +1,6 @@
-Read in opening balance
+Continue to work on fn_TbRollup (which is called by the trial balance query)
+ - build out the logic for when account is type P&L or retained earnings
 
-Roll up a monthly trial balance (factoring in retained earnings account above)
- - I have started this but have incorrectly not factored the opening balance into the balance sheet return values. 
- -  Best approach is to add to journals and buffer.
- - Maybe once coombined group by account and month end--> will make the buffered table a lot smaller and faster to filter.
 
 Create a REAMDE - how do I get this to display on github page?
 
