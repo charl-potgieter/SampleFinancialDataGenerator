@@ -52,7 +52,11 @@ let
             1, 
         type number),
     AddGrowthAdjCol = Table.AddColumn(AddRandomAdjCol, "Growth Factor", each Number.Power(1 + [Monthly growth percentage], [Month Index]), type number),
-    AddAmountCol = Table.AddColumn(AddGrowthAdjCol, "Absolute Amount", each [Base Amount Total For Month] / [Number of instances per month] * [Random Number Factor] * [Growth Factor], type number),
+    AddAmountCol = Table.AddColumn(AddGrowthAdjCol, "Absolute Amount", 
+            each Number.Round(
+                    [Base Amount Total For Month] / [Number of instances per month] * [Random Number Factor] * [Growth Factor],
+                    2),
+            type number),
 
     //Add unique jnl ID and select columns
     AddIndexCol = Table.AddIndexColumn(AddAmountCol, "Index", 0, 1),
@@ -73,7 +77,8 @@ let
     Combined = Table.Combine({AdHocJnls, AddJnlAmountCol}),
     AddAccountCodeCol = Table.AddColumn(Combined, "Account Code", each Text.Start([Account Code and Description], param_NumberOfAccountDigits), type text),
     SelectColsAndReorder = Table.SelectColumns(AddAccountCodeCol,{"EndOfMonth", "Jnl ID", "Account Code", "Jnl Description", "Jnl Amount"}),
-    ChangedType3 = Table.TransformColumnTypes(SelectColsAndReorder,{{"EndOfMonth", type date}, {"Jnl ID", type text}, {"Account Code", type text}, {"Jnl Description", type text}})
+    ChangedType3 = Table.TransformColumnTypes(SelectColsAndReorder,{{"EndOfMonth", type date}, {"Jnl ID", type text}, {"Account Code", type text}, {"Jnl Description", type text}}),
+    #"Sorted Rows" = Table.Sort(ChangedType3,{{"EndOfMonth", Order.Ascending}, {"Jnl ID", Order.Ascending}})
 
 in
-    ChangedType3
+    #"Sorted Rows"

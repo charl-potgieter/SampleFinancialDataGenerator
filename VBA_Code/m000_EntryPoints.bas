@@ -12,6 +12,10 @@ Sub RefreshOutputQueries()
 
     ThisWorkbook.Sheets("OutputJournals").ListObjects("tbl_Journals").QueryTable.Refresh BackgroundQuery:=False
     ThisWorkbook.Sheets("OutputChartOfAccounts").ListObjects("tbl_ChartOfAccounts").QueryTable.Refresh BackgroundQuery:=False
+    
+    'Pause to ensure above are refreshed as TB is dependent on output journal tb
+    Application.Wait Now + #12:00:05 AM#
+    ThisWorkbook.Sheets("OutputTB").ListObjects("tbl_TrialBalance").QueryTable.Refresh BackgroundQuery:=False
 
     'Cleanup
     Application.ScreenUpdating = True
@@ -36,6 +40,7 @@ Sub ExportOutputToFiles()
     
     ExportTableToPipeDelimtedText ThisWorkbook.Sheets("OutputJournals").ListObjects("tbl_Journals")
     ExportTableToPipeDelimtedText ThisWorkbook.Sheets("OutputChartOfAccounts").ListObjects("tbl_ChartOfAccounts")
+    ExportTableToPipeDelimtedText ThisWorkbook.Sheets("OutputTB").ListObjects("tbl_TrialBalance")
     
     'Cleanup
     Application.ScreenUpdating = True

@@ -1,4 +1,4 @@
 let
-    Source = fn_std_Parameters("Retained earnings account code")
+    Source = Text.From(fn_std_Parameters("Retained earnings account code"))
 in
     Source

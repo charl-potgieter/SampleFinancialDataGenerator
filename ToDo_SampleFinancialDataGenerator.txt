@@ -1,5 +1,5 @@
-Continue to work on fn_TbRollup (which is called by the trial balance query)
- - build out the logic for when account is type P&L or retained earnings
+Output TB does not balance!  
+ - RE is incorrectly picking up current year P&L transactions
 
 
 Create a REAMDE - how do I get this to display on github page?

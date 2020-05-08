@@ -4,7 +4,7 @@ Account Code|Account Description|Account Code and Description|Account Category 1
 1130|Account Kangaroo Bank|1130 Account Kangaroo Bank|Balance sheet|Assets|Current assets|Cash & Cash Equivalents|
 1210|Receivables Labrador State|1210 Receivables Labrador State|Balance sheet|Assets|Current assets|Receievables|
 1220|Receivables Poodle State|1220 Receivables Poodle State|Balance sheet|Assets|Current assets|Receievables|
-1230|Receivables Staffie State|1230 Receivables Staffie State|Balance sheet|Assets|Current assets|Receievables|
+1230|Receivables Persian State|1230 Receivables Persian State|Balance sheet|Assets|Current assets|Receievables|
 1310|Inventory Dog Food|1310 Inventory Dog Food|Balance sheet|Assets|Current assets|Inventory|
 1320|Inventory Cat Toys|1320 Inventory Cat Toys|Balance sheet|Assets|Current assets|Inventory|
 1330|Inventory Fish Tanks|1330 Inventory Fish Tanks|Balance sheet|Assets|Current assets|Inventory|
