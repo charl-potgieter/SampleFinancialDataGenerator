@@ -1,9 +1,8 @@
 Change repo name from ...Creator to ...Generator
 https://help.github.com/en/github/administering-a-repository/renaming-a-repository
 
-Badge in readme to state that program is currently in beta
-
 Create warning or postfix number if output file already exists
+https://stackoverflow.com/questions/31703554/save-with-a-different-name-if-the-file-already-exists-in-directory
 
 Change percentage increase to be annualised rather than by month
 
