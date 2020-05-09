@@ -1,8 +1,11 @@
-Output TB does not balance!  
- - RE is incorrectly picking up current year P&L transactions
-
-
 Create a REAMDE - how do I get this to display on github page?
+Best way to write may be in visual studio code that has an option to open preview to the side (see the little book icon near top of screen)
+https://guides.github.com/features/mastering-markdown/
+https://www.youtube.com/watch?v=yXY3f9jw7fg
+https://plugins.geany.org/markdown.html
+
+Look at github desktop program?
+
 
 Create a release section in github for excel file
 https://help.github.com/en/github/administering-a-repository/about-releases
