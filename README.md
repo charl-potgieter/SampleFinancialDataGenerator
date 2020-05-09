@@ -1,19 +1,25 @@
-# Repository Title Goes Here
+# Sample Financial Data Creator
 
-> Subtitle or Short Description Goes Here
+> Excel based file utilising VBA and Power Query which generates sample financial data
 
-> ideally one sentence
 
-> include terms/tags that can be searched
+## Installation
 
-**Badges will go here**
+- TBA
+ - 'Mention something about download'
 
-- build status
-- devDependencies
-- npm package
-- coverage
-- slack
-- downloads
-- gitter chat
-- license
-- etc.
+
+## Output files generated
+
+- Journal listing
+- Trial Balances
+- Chart of accounts (refomatted version of input)
+
+
+## Functionality
+
+ - Generates recurring journals between date range
+ - Apply increasing / decreasing trend over time
+ - Ability to apply random fluctuations to above trend
+ - Ad hoc once off journals
+ - Output is in the form of pipe delimted text files to enable easy reading by Excel or Powe BI
