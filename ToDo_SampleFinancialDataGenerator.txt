@@ -1,11 +1,23 @@
-Create a REAMDE - how do I get this to display on github page?
-Best way to write may be in visual studio code that has an option to open preview to the side (see the little book icon near top of screen)
-https://guides.github.com/features/mastering-markdown/
-https://www.youtube.com/watch?v=yXY3f9jw7fg
-https://plugins.geany.org/markdown.html
+Change repo name from ...Creator to ...Generator
+https://help.github.com/en/github/administering-a-repository/renaming-a-repository
 
-Look at github desktop program?
+Badge in readme to state that program is currently in beta
 
+Create warning or postfix number if output file already exists
+
+Change percentage increase to be annualised rather than by month
+
+What is the best way to direct user to the latest release download in the Readme.md
+https://help.github.com/en/github/administering-a-repository/linking-to-releases
+
+Create screenshots on Readme.md
+
+Add a roadmap, see example below
+https://github.com/otykier/TabularEditor/wiki/Roadmap
+
+Look at github desktop program, or alternatively github in visual studio?
 
 Create a release section in github for excel file
 https://help.github.com/en/github/administering-a-repository/about-releases
+
+What is the best way to refer readers to the release section of a readme?
