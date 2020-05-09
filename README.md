@@ -13,7 +13,7 @@
 
 - Journal listing
 - Trial Balances
-- Chart of accounts (refomatted version of input)
+- Chart of accounts (reformatted version of input)
 
 
 ## Functionality
@@ -22,4 +22,10 @@
  - Apply increasing / decreasing trend over time
  - Ability to apply random fluctuations to above trend
  - Ad hoc once off journals
- - Output is in the form of pipe delimted text files to enable easy reading by Excel or Powe BI
+ - Output is in the form of pipe delimited text files to enable easy reading by Excel or Power BI
+
+ ## License
+
+ ### GNU GPL v3
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)    
+
