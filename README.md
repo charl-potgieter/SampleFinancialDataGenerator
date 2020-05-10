@@ -1,6 +1,6 @@
 # Sample Financial Data Generator
 
-> Excel based file utilising VBA and Power Query which generates sample financial data
+> Excel based file for generating sample financial data with the help of VBA and Power Query.
 
 
 ## Installation
@@ -13,7 +13,7 @@
 
 - Journal listing
 - Trial Balances
-- Chart of accounts (reformatted version of input)
+- Chart of accounts including a split between account code and description
 
 
 ## Functionality
