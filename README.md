@@ -1,4 +1,4 @@
-# Sample Financial Data Creator
+# Sample Financial Data Generator
 
 > Excel based file utilising VBA and Power Query which generates sample financial data
 

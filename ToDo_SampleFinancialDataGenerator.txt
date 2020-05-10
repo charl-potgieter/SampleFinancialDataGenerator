@@ -1,5 +1,3 @@
-Update licence badge in README
-
 Change repo name from ...Creator to ...Generator
 --> First make a backup of the entire local git repo
 https://help.github.com/en/github/administering-a-repository/renaming-a-repository
