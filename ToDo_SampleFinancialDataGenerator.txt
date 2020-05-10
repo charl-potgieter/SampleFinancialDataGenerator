@@ -1,7 +1,4 @@
-Consider livcence change to mit
-https://exygy.com/blog/which-license-should-i-use-mit-vs-apache-vs-gpl/
-https://github.blog/2015-03-09-open-source-license-usage-on-github-com/
-Will need to update licence badge in README as well
+Update licence badge in README
 
 Change repo name from ...Creator to ...Generator
 --> First make a backup of the entire local git repo
