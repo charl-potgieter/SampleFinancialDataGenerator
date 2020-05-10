@@ -1,6 +1,13 @@
+Consider livcence change to mit
+https://exygy.com/blog/which-license-should-i-use-mit-vs-apache-vs-gpl/
+https://github.blog/2015-03-09-open-source-license-usage-on-github-com/
+Will need to update licence badge in README as well
+
 Change repo name from ...Creator to ...Generator
+--> First make a backup of the entire local git repo
 https://help.github.com/en/github/administering-a-repository/renaming-a-repository
 
+Move to https?
 
 Create warning or postfix number if output file already exists
 https://stackoverflow.com/questions/31703554/save-with-a-different-name-if-the-file-already-exists-in-directory
