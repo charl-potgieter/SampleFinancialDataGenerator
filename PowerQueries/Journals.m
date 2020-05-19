@@ -40,10 +40,10 @@ let
     ExpandedTables = Table.ExpandTableColumn(ExpandedListOfTables, "AddMultiTableCol", 
         {
             "Debit Account Code and Description", "Credit Account Code and Description", "Jnl Description", "Base Amount Total For Month", 
-            "Is recurring", "Monthly growth percentage", "Number of instances per month", "Randomise", "Random Variation around base"}, 
+            "Is recurring", "Annual growth percentage", "Number of instances per month", "Randomise", "Random Variation around base"}, 
         {
             "Debit Account Code and Description", "Credit Account Code and Description", "Jnl Description", "Base Amount Total For Month", 
-            "Is recurring", "Monthly growth percentage", "Number of instances per month", "Randomise", "Random Variation around base"}),
+            "Is recurring", "Annual growth percentage", "Number of instances per month", "Randomise", "Random Variation around base"}),
 
     //Calculate amount by adding random number factor and percentage growth
     AddRandomAdjCol = Table.AddColumn(ExpandedTables, "Random Number Factor", each if [Randomise] then
@@ -51,7 +51,9 @@ let
         else
             1, 
         type number),
-    AddGrowthAdjCol = Table.AddColumn(AddRandomAdjCol, "Growth Factor", each Number.Power(1 + [Monthly growth percentage], [Month Index]), type number),
+
+    AddMonthlyGrowthPercentage = Table.AddColumn(AddRandomAdjCol, "Monthly growth percentage", each fn_MonthlyFromAnnualisedPercentage([Annual growth percentage]),type number),
+    AddGrowthAdjCol = Table.AddColumn(AddMonthlyGrowthPercentage, "Growth Factor", each Number.Power(1 + [Monthly growth percentage], [Month Index]), type number),
     AddAmountCol = Table.AddColumn(AddGrowthAdjCol, "Absolute Amount", 
             each Number.Round(
                     [Base Amount Total For Month] / [Number of instances per month] * [Random Number Factor] * [Growth Factor],
@@ -78,7 +80,7 @@ let
     AddAccountCodeCol = Table.AddColumn(Combined, "Account Code", each Text.Start([Account Code and Description], param_NumberOfAccountDigits), type text),
     SelectColsAndReorder = Table.SelectColumns(AddAccountCodeCol,{"EndOfMonth", "Jnl ID", "Account Code", "Jnl Description", "Jnl Amount"}),
     ChangedType3 = Table.TransformColumnTypes(SelectColsAndReorder,{{"EndOfMonth", type date}, {"Jnl ID", type text}, {"Account Code", type text}, {"Jnl Description", type text}}),
-    #"Sorted Rows" = Table.Sort(ChangedType3,{{"EndOfMonth", Order.Ascending}, {"Jnl ID", Order.Ascending}})
+    SortedRows = Table.Sort(ChangedType3,{{"EndOfMonth", Order.Ascending}, {"Jnl ID", Order.Ascending}})
 
 in
-    #"Sorted Rows"
+    SortedRows

@@ -96,8 +96,10 @@ Sub ExportTableToPipeDelimtedText(lo As ListObject)
 
     If Left(lo.Name, 4) = "tbl_" Then
         sFolderPathAndName = sFolderPath & Application.PathSeparator & Right(lo.Name, Len(lo.Name) - 4) & ".txt"
+        sFolderPathAndName = GetNextAvailableFileName(sFolderPathAndName)
     Else
         sFolderPathAndName = sFolderPath & Application.PathSeparator & lo.Name & ".txt"
+        sFolderPathAndName = GetNextAvailableFileName(sFolderPathAndName)
     End If
     ExportListObjectToPipeDelimtedText lo, sFolderPathAndName
 

@@ -104,12 +104,6 @@ let
             fn_RetainedEarningsPortionOfTb(BufferedTransactions, [EndOfMonth]) &
             fn_PandLPortionOfTb(BufferedTransactions, [EndOfMonth]), 
             type table),
-    
-    /*
-    AddTbTable = Table.AddColumn(ChangedType, "TB as table", 
-            each fn_BsPortionOfTb(BufferedTransactions, [EndOfMonth]), 
-            type table),            
-    */
 
     ExpandedTBTable = Table.ExpandTableColumn(AddTbTable, "TB as table", {"Account Code", "Amount"}, {"Account Code", "Amount"}),
     ChangedType2 = Table.TransformColumnTypes(ExpandedTBTable,{{"Account Code", type text}, {"Amount", type number}})
